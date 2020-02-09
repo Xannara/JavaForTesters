@@ -1,7 +1,7 @@
 public class PointProgram {
     public static void main(String[] args) {
 
-        Point p = new Point(3, 5, 10, 15);
+        Point p = new Point(4, 6, 10, 15);
         //Point p1 = new Point(3, 5);
    //     p1.x = 3;
    //     p1.y = 5;
