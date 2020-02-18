@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="addressbook.GroupCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-18T21:20:58" hostname="XANNARA-PC" time="3.832">
+<testsuite name="addressbook.GroupCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-18T21:50:01" hostname="XANNARA-PC" time="6.029">
   <properties/>
-  <testcase name="testGroupCreation" classname="addressbook.GroupCreationTests" time="3.832"/>
+  <testcase name="testGroupCreation" classname="addressbook.GroupCreationTests" time="6.029"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch-heads/3987@{#882}) on port 32342
+  <system-err><![CDATA[Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch-heads/3987@{#882}) on port 28088
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-фев 19, 2020 12:20:54 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+фев 19, 2020 12:49:44 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>
