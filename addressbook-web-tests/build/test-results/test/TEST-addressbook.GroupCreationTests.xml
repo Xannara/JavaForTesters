@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="addressbook.GroupCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-18T20:31:37" hostname="XANNARA-PC" time="9.842">
+<testsuite name="addressbook.GroupCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-18T21:04:22" hostname="XANNARA-PC" time="11.769">
   <properties/>
-  <testcase name="testGroupCreationTests" classname="addressbook.GroupCreationTests" time="9.842"/>
+  <testcase name="testGroupCreation" classname="addressbook.GroupCreationTests" time="11.769"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch-heads/3987@{#882}) on port 47384
+  <system-err><![CDATA[Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch-heads/3987@{#882}) on port 19807
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-фев 18, 2020 11:31:37 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+[1582059844.926][WARNING]: Timed out connecting to Chrome, retrying...
+[1582059848.927][WARNING]: Timed out connecting to Chrome, retrying...
+фев 19, 2020 12:04:22 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>
