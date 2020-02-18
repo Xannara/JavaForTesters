@@ -9,16 +9,16 @@ import org.openqa.selenium.WebDriver;
 public class AddName {
   private WebDriver wd;
 
-  @BeforeClass(alwaysRun = true)
+  @BeforeMethod
   public void setUp() throws Exception {
     System.setProperty("webdriver.chrome.driver", "c:\\Windows\\System32\\chromedriver.exe");
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    wd.get("http://localhost/addressbook/");
+    login();
   }
 
-  @Test
-  public void testAddName() throws Exception {
-    wd.get("http://localhost/addressbook/");
+  private void login() {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
@@ -26,7 +26,25 @@ public class AddName {
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys("secret");
     wd.findElement(By.xpath("//input[@value='Login']")).click();
-    wd.findElement(By.linkText("add new")).click();
+  }
+
+  @Test
+  public void testAddName() throws Exception {
+    gotoAddNewPage();
+    fillNewNameForm();
+    submitNewNameCreation();
+    returnToHomePage();
+  }
+
+  private void returnToHomePage() {
+    wd.findElement(By.linkText("home page")).click();
+  }
+
+  private void submitNewNameCreation() {
+    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+  }
+
+  private void fillNewNameForm() {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys("Lena");
@@ -42,11 +60,13 @@ public class AddName {
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
     wd.findElement(By.name("email")).sendKeys("lena@mail.com");
-    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
-    wd.findElement(By.linkText("home page")).click();
   }
 
-  @AfterClass(alwaysRun = true)
+  private void gotoAddNewPage() {
+    wd.findElement(By.linkText("add new")).click();
+  }
+
+  @AfterMethod
   public void tearDown() throws Exception {
     wd.quit();
   }
