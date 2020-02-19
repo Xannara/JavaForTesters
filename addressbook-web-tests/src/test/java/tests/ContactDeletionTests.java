@@ -1,4 +1,4 @@
-package addressbook;
+package tests;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
@@ -6,6 +6,7 @@ import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
+import tests.TestBase;
 
 public class ContactDeletionTests extends TestBase {
   private WebDriver wd;
