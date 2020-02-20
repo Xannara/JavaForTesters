@@ -37,4 +37,24 @@ public class ContactHelper extends HelperBase {
     public void submitAlert() {
         wd.switchTo().alert().accept();
     }
+
+    public void initContactModification() {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
+    }
+
+    public void returnToHomePage() {
+        click(By.linkText("home page"));
+    }
+
+    public void fillContactForm(ContactData contactData) {
+        type(By.name("firstname"), contactData.getFirstname());
+        type(By.name("lastname"), contactData.getLastname());
+        type(By.name("address"), contactData.getAddress());
+        type(By.name("home"), contactData.getHometelephone());
+        type(By.name("email"), contactData.getEmail());
+    }
 }
