@@ -71,4 +71,14 @@ public class ContactHelper extends HelperBase {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
     }
+
+    public void createContact(ContactData contact) {
+        fillNewNameForm(contact, true);
+        submitNewNameCreation();
+        returnToHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }
