@@ -30,7 +30,7 @@ public class ApplicationManager {
         }
         System.setProperty("webdriver.chrome.driver", "c:\\Windows\\System32\\chromedriver.exe");
         wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-        wd.get("http://localhost/addressbook/group.php");
+        wd.get("http://localhost/addressbook");
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
