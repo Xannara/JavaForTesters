@@ -58,6 +58,10 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home page"));
     }
 
+    public void returnToHome() {
+        click(By.linkText("home"));
+    }
+
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
@@ -80,5 +84,9 @@ public class ContactHelper extends HelperBase {
 
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
+    }
+
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
     }
 }
