@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 public class ContactData {
-    private final String id;
+    private int id;
     private final String firstname;
     private final String lastname;
     private final String address;
@@ -11,11 +11,15 @@ public class ContactData {
     private final String email;
     private String group;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public ContactData(String id, String firstname, String lastname, String address, String hometelephone, String email, String group) {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ContactData(int id, String firstname, String lastname, String address, String hometelephone, String email, String group) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -26,7 +30,7 @@ public class ContactData {
     }
 
     public ContactData(String firstname, String lastname, String address, String hometelephone, String email, String group) {
-        this.id = null;
+        this.id = 0;
         this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
@@ -73,7 +77,7 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return Objects.equals(id, that.id) &&
+        return id == that.id &&
                 Objects.equals(firstname, that.firstname) &&
                 Objects.equals(lastname, that.lastname);
     }
