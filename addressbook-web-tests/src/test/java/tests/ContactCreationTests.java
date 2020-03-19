@@ -5,18 +5,17 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
   @Test
   public void testAddName() throws Exception {
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().gotoAddNewPage();
+    List<ContactData> before = app.contact().contactList();
+    app.contact().gotoAddNewPage();
     ContactData contact = new ContactData("Lena", "Lenina", "Moscow", "88007776655", "lena@mail.com", "test1");
-    app.getContactHelper().createContact(contact);
-    List<ContactData> after = app.getContactHelper().getContactList();
+    app.contact().create(contact);
+    List<ContactData> after = app.contact().contactList();
     Assert.assertEquals(after.size(),before.size() + 1);
 
     before.add(contact);
