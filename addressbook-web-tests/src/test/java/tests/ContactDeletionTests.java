@@ -1,11 +1,13 @@
 package tests;
 
 import model.ContactData;
-import org.testng.Assert;
+import model.Contacts;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class ContactDeletionTests extends TestBase {
 
@@ -23,13 +25,12 @@ public class ContactDeletionTests extends TestBase {
   @Test
   public void testContactDeletion() throws Exception {
     app.goTo().homePage();
-    Set<ContactData> before = app.contact().allContact();
+    Contacts before = app.contact().allContact();
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
-    Set<ContactData> after = app.contact().allContact();
-    Assert.assertEquals(after.size(),before.size() - 1);
+    Contacts after = app.contact().allContact();
 
-    before.remove(deletedContact);
-    Assert.assertEquals(before, after);
+    assertEquals(after.size(),before.size() - 1);
+    assertThat(after, equalTo(before.withOut(deletedContact)));
   }
 }

@@ -1,6 +1,7 @@
 package appmanager;
 
 import model.GroupData;
+import model.Groups;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -80,8 +81,8 @@ public class GroupHelper extends HelperBase {
         returnToGroupPage();
     }
 
-    public Set<GroupData> allGroup() {
-        Set<GroupData> groups = new HashSet<GroupData>();
+    public Groups allGroup() {
+        Groups groups = new Groups();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
             String name = element.getText();
