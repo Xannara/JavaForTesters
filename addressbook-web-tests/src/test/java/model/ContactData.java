@@ -38,16 +38,6 @@ public class ContactData {
         return this;
     }
 
-   /* public Object withMobilePhone(String mobile) {
-        this.mobile = mobile;
-        return this;
-    }
-
-    public Object withWorkPhone(String work) {
-        this.work = work;
-        return this;
-    }*/
-
     public ContactData withEmail(String email) {
         this.email = email;
         return this;
