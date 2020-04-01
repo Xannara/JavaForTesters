@@ -1,24 +1,43 @@
 package tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import model.ContactData;
 import model.Contacts;
 import org.testng.annotations.*;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
 
-  @Test
-  public void testAddName() throws Exception {
+  @DataProvider
+  public Iterator<Object[]> validContactsFromJSON() throws IOException {
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")));
+    String json = "";
+    String line = reader.readLine();
+    while (line != null) {
+      json += line;
+      line = reader.readLine();
+    }
+    Gson gson = new Gson();
+    List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType());
+    return contacts.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
+  }
+
+  @Test(dataProvider = "validContactsFromJSON")
+  public void testAddName(ContactData contact) throws Exception {
     Contacts before = app.contact().allContact();
     app.contact().gotoAddNewPage();
-    File photo = new File("src/test/resources/2554.jpeg");
-    ContactData contact = new ContactData()
-            .withFirstname("Lena").withLastname("Lenina").withAddress("Moscow")
-            .withHomePhone("88007776655").withEmail("lena@mail.com").withGroup("test1").withPhoto(photo);
+  //  File photo = new File("src/test/resources/2554.jpeg");
     app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().allContact();

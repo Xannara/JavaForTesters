@@ -19,7 +19,6 @@ public class ContactData {
     private String work;
     @Expose
     private String email;
-    @Expose
     private String group;
     private String allPhones;
     private String email2;

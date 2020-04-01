@@ -4,39 +4,20 @@
     "lastname": "Elenina 0",
     "address": "Moscow 0",
     "hometelephone": "88007776655 0",
-    "email": "elena@mail.com 0",
-    "group": "test10 0"
+    "email": "elena@mail.com 0"
   },
   {
     "firstname": "Elena 1",
     "lastname": "Elenina 1",
     "address": "Moscow 1",
     "hometelephone": "88007776655 1",
-    "email": "elena@mail.com 1",
-    "group": "test10 1"
+    "email": "elena@mail.com 1"
   },
   {
     "firstname": "Elena 2",
     "lastname": "Elenina 2",
     "address": "Moscow 2",
     "hometelephone": "88007776655 2",
-    "email": "elena@mail.com 2",
-    "group": "test10 2"
-  },
-  {
-    "firstname": "Elena 3",
-    "lastname": "Elenina 3",
-    "address": "Moscow 3",
-    "hometelephone": "88007776655 3",
-    "email": "elena@mail.com 3",
-    "group": "test10 3"
-  },
-  {
-    "firstname": "Elena 4",
-    "lastname": "Elenina 4",
-    "address": "Moscow 4",
-    "hometelephone": "88007776655 4",
-    "email": "elena@mail.com 4",
-    "group": "test10 4"
+    "email": "elena@mail.com 2"
   }
 ]
