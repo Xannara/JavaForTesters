@@ -19,29 +19,30 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
 
-  @DataProvider
-  public Iterator<Object[]> validContactsFromJSON() throws IOException {
-    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")));
-    String json = "";
-    String line = reader.readLine();
-    while (line != null) {
-      json += line;
-      line = reader.readLine();
+    @DataProvider
+    public Iterator<Object[]> validContactsFromJSON() throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
+          String json = "";
+          String line = reader.readLine();
+          while (line != null) {
+            json += line;
+            line = reader.readLine();
+          }
+          Gson gson = new Gson();
+          List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>() {
+          }.getType());
+          return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
+        }
     }
-    Gson gson = new Gson();
-    List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType());
-    return contacts.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
-  }
 
-  @Test(dataProvider = "validContactsFromJSON")
-  public void testAddName(ContactData contact) throws Exception {
-    Contacts before = app.contact().allContact();
-    app.contact().gotoAddNewPage();
-  //  File photo = new File("src/test/resources/2554.jpeg");
-    app.contact().create(contact);
-    assertThat(app.contact().count(), equalTo(before.size() + 1));
-    Contacts after = app.contact().allContact();
-    assertThat(after, equalTo(
-            before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
-  }
+    @Test(dataProvider = "validContactsFromJSON")
+    public void testAddName(ContactData contact) throws Exception {
+        Contacts before = app.contact().allContact();
+        app.contact().gotoAddNewPage();
+        app.contact().create(contact);
+        assertThat(app.contact().count(), equalTo(before.size() + 1));
+        Contacts after = app.contact().allContact();
+        assertThat(after, equalTo(
+                before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+    }
 }
