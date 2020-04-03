@@ -1,0 +1,6 @@
+22:28:29.574 [main] INFO  tests.TestBase - Start test testGroupCreation
+22:28:41.354 [main] INFO  tests.TestBase - Stop test testGroupCreation
+22:28:41.356 [main] INFO  tests.TestBase - Start test testGroupCreation
+22:28:47.564 [main] INFO  tests.TestBase - Stop test testGroupCreation
+22:28:47.567 [main] INFO  tests.TestBase - Start test testGroupCreation
+22:28:54.229 [main] INFO  tests.TestBase - Stop test testGroupCreation

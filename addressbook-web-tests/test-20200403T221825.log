@@ -1,0 +1,6 @@
+22:18:34.109 [main] INFO  tests.GroupCreationTests - Start test testGroupCreation
+22:18:43.805 [main] INFO  tests.GroupCreationTests - Stop test testGroupCreation
+22:18:43.817 [main] INFO  tests.GroupCreationTests - Start test testGroupCreation
+22:18:50.665 [main] INFO  tests.GroupCreationTests - Stop test testGroupCreation
+22:18:50.667 [main] INFO  tests.GroupCreationTests - Start test testGroupCreation
+22:18:56.471 [main] INFO  tests.GroupCreationTests - Stop test testGroupCreation
