@@ -1,29 +1,67 @@
 package model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
+@Entity
+@Table(name = "addressbook")
+
 public class ContactData {
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
+
     @Expose
+    @Column(name = "firstname")
     private String firstname;
+
     @Expose
+    @Column(name = "lastname")
     private String lastname;
+
     @Expose
+    @Column(name = "address")
+    @Type(type = "text")
     private String address;
+
     @Expose
+    @Column(name = "home")
+    @Type(type = "text")
     private String hometelephone;
+
+    @Column(name = "mobile")
+    @Type(type = "text")
     private String mobile;
+
+    @Column(name = "work")
+    @Type(type = "text")
     private String work;
+
     @Expose
+    @Column(name = "email")
+    @Type(type = "text")
     private String email;
+
+    @Transient
     private String group;
+
+    @Transient
     private String allPhones;
+
+    @Transient
     private String email2;
+
+    @Transient
     private String email3;
+
+    @Transient
     private String allEmails;
+
+    @Transient
     private File photo;
 
     public ContactData withId(int id) {
