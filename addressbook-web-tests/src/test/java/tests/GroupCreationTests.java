@@ -5,8 +5,6 @@ import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import model.GroupData;
 import model.Groups;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
 
 import java.io.*;
@@ -53,10 +51,10 @@ public class GroupCreationTests extends TestBase {
     @Test(dataProvider = "validGroupsFromJSON")
     public void testGroupCreation(GroupData group) throws Exception {
         app.goTo().groupPage();
-        Groups before = app.group().allGroup();
+        Groups before = app.db().groups();
         app.group().create(group);
         assertThat(app.group().count(), equalTo(before.size() + 1));
-        Groups after = app.group().allGroup();
+        Groups after = app.db().groups();
         assertThat(after, equalTo(
                 before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }
