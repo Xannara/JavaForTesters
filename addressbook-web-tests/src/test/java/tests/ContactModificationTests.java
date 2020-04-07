@@ -17,7 +17,7 @@ public class ContactModificationTests extends TestBase {
             app.contact().gotoAddNewPage();
             app.contact().create(new ContactData()
                     .withFirstname("Lena").withLastname("Lenina").withAddress("Moscow")
-                    .withHomePhone("88007776655").withEmail("lena@mail.com").withGroup("test10"));
+                    .withHomePhone("88007776655").withEmail("lena@mail.com"));
         }
     }
 

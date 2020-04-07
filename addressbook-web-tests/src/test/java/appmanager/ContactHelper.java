@@ -74,11 +74,11 @@ public class ContactHelper extends HelperBase {
         type(By.name("home"), contactData.getHometelephone());
         type(By.name("email"), contactData.getEmail());
 
-        if (creation) {
+        /*if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
-        }
+        }*/
     }
 
     public void create(ContactData contact) {
