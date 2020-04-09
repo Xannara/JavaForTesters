@@ -1,6 +1,8 @@
 package tests;
 
 import appmanager.ApplicationManager;
+import model.ContactData;
+import model.Contacts;
 import model.GroupData;
 import model.Groups;
 import org.openqa.selenium.remote.BrowserType;
@@ -52,6 +54,17 @@ public class TestBase {
             assertThat(uiGroups, equalTo(dbGroups.stream()
                     .map((g) -> new GroupData().withId(g.getId()).withName(g.getName()))
                     .collect(Collectors.toSet())));
+        }
+    }
+
+    public void verifyContactListInUI() {
+        if (Boolean.getBoolean("verifyUI")) {
+            Contacts dbContacts = app.db().contacts();
+            Contacts uiContacts = app.contact().allContact();
+            assertThat(uiContacts, equalTo(dbContacts.stream()
+                    .map((c) -> new ContactData().withId(c.getId()).withFirstname(c.getFirstname())
+                            .withLastname(c.getLastname()))
+                            .collect(Collectors.toSet())));
         }
     }
 }
