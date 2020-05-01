@@ -1,14 +1,12 @@
 package appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -26,7 +24,7 @@ public class ApplicationManager {
     private DbHelper dbHelper;
 
     public ApplicationManager(String browser) {
-        this.browser = browser;
+        ApplicationManager.this.browser = browser;
         properties = new Properties();
     }
 
@@ -37,39 +35,26 @@ public class ApplicationManager {
         dbHelper = new DbHelper();
 
         if (browser.equals(BrowserType.CHROME)) {
-            wd = new ChromeDriver();
+            ApplicationManager.this.wd = new ChromeDriver();
         } else if (browser.equals(BrowserType.IE)) {
-            wd = new InternetExplorerDriver();
+            ApplicationManager.this.wd = new InternetExplorerDriver();
         }
         System.setProperty("webdriver.chrome.driver", "c:\\Windows\\System32\\chromedriver.exe");
-        wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-        wd.get(properties.getProperty("web.baseURL"));
-        groupHelper = new GroupHelper(wd);
-        navigationHelper = new NavigationHelper(wd);
-        sessionHelper = new SessionHelper(wd);
-        contactHelper = new ContactHelper(wd);
+        ApplicationManager.this.wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        ApplicationManager.this.wd.get(properties.getProperty("web.baseURL"));
+        groupHelper = new GroupHelper(ApplicationManager.this.wd);
+        navigationHelper = new NavigationHelper(ApplicationManager.this.wd);
+        sessionHelper = new SessionHelper(ApplicationManager.this.wd);
+        contactHelper = new ContactHelper(ApplicationManager.this.wd);
         sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
     }
 
     public void logout() {
-        wd.findElement(By.linkText("Logout")).click();
+        ApplicationManager.this.wd.findElement(By.linkText("Logout")).click();
     }
 
     public void stop() {
-        wd.quit();
-    }
-
-    public boolean isElementPresent(By by) {
-    try {
-      wd.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
-
-    public void returnToHomePage() {
-        wd.findElement(By.linkText("home page")).click();
+        ApplicationManager.this.wd.quit();
     }
 
     public GroupHelper group() {
@@ -87,4 +72,13 @@ public class ApplicationManager {
     public DbHelper db() {
         return dbHelper;
     }
-}
+
+    public ContactHelper getContactHelper() {
+        return contactHelper;
+    }
+
+    public void returnToHomePage() {
+            ApplicationManager.this.wd.findElement(By.linkText("home page")).click();
+        }
+    }
+

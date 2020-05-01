@@ -5,6 +5,7 @@ import model.ContactData;
 import model.Contacts;
 import model.GroupData;
 import model.Groups;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,10 +28,13 @@ public class TestBase {
     protected static final ApplicationManager app
             = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
 
+    private WebDriver wd;
+
     @BeforeSuite
     public void setUp() throws Exception {
         app.init();
     }
+
 
     @AfterSuite(alwaysRun = true)
     public void tearDown() throws Exception {
@@ -67,4 +71,5 @@ public class TestBase {
                             .collect(Collectors.toSet())));
         }
     }
+
 }

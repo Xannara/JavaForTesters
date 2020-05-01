@@ -2,6 +2,7 @@ package appmanager;
 
 import model.ContactData;
 import model.Contacts;
+import model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,8 @@ import org.testng.Assert;
 import java.util.List;
 
 public class ContactHelper extends HelperBase {
+
+
 
     public ContactHelper(WebDriver wd) {
         super(wd);
@@ -166,5 +169,48 @@ public class ContactHelper extends HelperBase {
         String address = wd.findElement(By.name("address")).getText();
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withAddress(address);
+    }
+
+
+    public void returnToAllContacts() {
+        wd.findElement(By.name("group")).click();
+        new Select(wd.findElement(By.name("group"))).selectByVisibleText("[all]");
+        wd.findElement(By.xpath("//option[@value='']")).click();
+    }
+
+    public void returnToContactInGroup() {
+        wd.findElement(By.linkText("group page \"test 1\"")).click();
+    }
+
+    public void addToGroup(GroupData groupData) {
+        wd.findElement(By.name("to_group")).click();
+        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(groupData.getName());
+        wd.findElement(By.xpath("(//option[@value='39'])[2]")).click();
+        wd.findElement(By.name("add")).click();
+    }
+
+    public void returnToContactList() {
+        wd.findElement(By.name("group")).click();
+        new Select(wd.findElement(By.name("group"))).selectByVisibleText("[all]");
+        wd.findElement(By.xpath("//option[@value='']")).click();
+    }
+
+    public void returnToContactsInGroup() {
+        wd.findElement(By.linkText("group page \"test 1\"")).click();
+    }
+
+    public void selectContact() {
+        wd.findElement(By.name("selected[]")).click();
+    }
+
+    public void selectContactInGroup() {
+        wd.findElement(By.name("selected[]")).click();
+        wd.findElement(By.name("remove")).click();
+    }
+
+    public void selectGroup(GroupData groupData) {
+        wd.findElement(By.name("group")).click();
+        new Select(wd.findElement(By.name("group"))).selectByVisibleText(groupData.getName());
+        wd.findElement(By.xpath("//option[@value='39']")).click();
     }
 }
